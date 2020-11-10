@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 
+use DateTime;
 use Faker\Factory;
 use App\Entity\Offre;
 use Doctrine\Persistence\ObjectManager;
@@ -13,25 +14,21 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
-        $date_creat = $faker->dateTimeBetween('-6 month');
 
-        // for ($i = 0; $i < 10; $i++) {
-        //     $date_creat = $faker->dateTimeBetween('-6 month');
-
-        //     $offre = new Offre();
-        //     $offre->setTitle($faker->paragraphs($nb = 3, $asText = true))
-        //         ->setDescription($faker->paragraphs($nb = 50, $asText = true))
-        //         ->setAdresse($faker->address)
-        //         ->setVille($faker->city)
-        //         ->setCodePostal($faker->numberBetween($min = 1000, $max = 9000))
-        //         ->setDateCrea($date_creat)
-        //         ->setDateUpdate($date_creat)
-        //         ->setEndMission($date_creat)
-        //         ->setContrat("")
-        //         ->setTypeContrat("");
-        // }
-        // $product = new Offre();
-        // $manager->persist($product);
-        //$manager->flush();
+        for ($i = 0; $i < 10; $i++) {
+            $offre = new Offre();
+            $offre->setTitle($faker->sentence($nb = 3, true))
+                ->setDescription($faker->sentence($nb = 100, $asText = true))
+                ->setAdresse($faker->address)
+                ->setVille($faker->city)
+                ->setCodePostal($faker->numberBetween($min = 1000, $max = 9000))
+                ->setDateCrea(new \DateTime())
+                ->setDateUpdate(new \DateTime())
+                ->setEndMission(new \DateTime())
+                ->setContrat($faker->randomElement($array = array("CDD", "CDI", "free")))
+                ->setTypeContrat($faker->randomElement($array = array("temps pleins", "temps partiel")));
+            $manager->persist($offre);
+        }
+        $manager->flush();
     }
 }

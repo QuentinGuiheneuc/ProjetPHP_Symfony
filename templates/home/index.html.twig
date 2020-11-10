@@ -5,78 +5,32 @@
 
 {% block body %}
 	<div class="row">
-		<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-info">Voir offre</a>
+		{% for offre in data %}
+
+			<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">{{offre.title}}</h5>
+						{% set desp = offre.description | slice(0, 100) ~ ' ...' %}
+						<p class="card-text">{{ desp }}</p>
+						<p class="card-text">
+							Contract :
+							{{ offre.contrat }}</p>
+
+						<p class="card-text">Temp :
+							{{ offre.TypeContrat }}</p>
+						<p class="card-text">Ville :
+							{{ offre.ville }}</p>
 
 
+						<a href="/offres/{{ offre.id }}" class=" btn btn-info">Voir offre
+
+
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-info">Voir offre</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-info">Voir offre</a>
-
-
-				</div>
-			</div>
-		</div>
-
-		<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-info">Voir offre</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-info">Voir offre</a>
-
-
-				</div>
-			</div>
-		</div>
-
-		<div class="col-xl-3 col-lg-6 order-lg-1" style="width: 18rem;margin-top: 10px;">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-info">Voir offre</a>
-
-
-				</div>
-			</div>
-		</div>
-
+		{% endfor %}
 
 	</div>
 {% endblock %}

@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OffreController!{% endblock %}
+{% block title %}Offre
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="row">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<div class="col-xl-12 col-lg-12 order-lg-12" style="width: 18rem;margin-top: 10px;">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">{{offre.title}}</h5>
+					<p class="card-text">{{ offre.description }}</p>
+					<p class="card-text">
+						Contract :
+						{{ offre.contrat }}</p>
+					<p class="card-text">Temp :
+						{{ offre.TypeContrat }}</p>
+					<p class="card-text">Address :
+						{{ offre.Adresse }}</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/guihe/Documents/Ynov/Ynov 2020_2021/PHP/projet/linkedin/src/Controller/OffreController.php'|file_link(0) }}">src/Controller/OffreController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/guihe/Documents/Ynov/Ynov 2020_2021/PHP/projet/linkedin/templates/offre/index.html.twig'|file_link(0) }}">templates/offre/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+					<p class="card-text">Date de creation :
+						{{  offre.DateCrea |date("m/d/Y")}},
+												Date de modification :
+						{{  offre.DateUpdate |date("m/d/Y")}},
+												Date de fin de contrat :
+						{{  offre.EndMission |date("m/d/Y")}}</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
 {% endblock %}
