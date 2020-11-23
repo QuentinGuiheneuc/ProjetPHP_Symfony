@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Offre;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class UpdatePostController extends AbstractController
 {
@@ -18,16 +20,58 @@ class UpdatePostController extends AbstractController
     public function index(Offre $offre, Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createFormBuilder($offre)
-            ->add("title")
-            ->add("description")
-            ->add("adresse")
-            ->add("ville")
-            ->add("code_postal")
-            ->add("date_crea")
+            ->add("title", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add("description", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add(
+                "adresse",
+                TextareaType::class,
+                [
+                    "attr" => [
+                        "class" => "form-control"
+                    ]
+                ]
+            )
+            ->add("ville", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add(
+                "code_postal",
+                TextareaType::class,
+                [
+                    "attr" => [
+                        "class" => "form-control"
+                    ]
+                ]
+            )
+            ->add(
+                "date_crea"
+            )
             ->add("end_mission")
-            ->add("contrat")
-            ->add("type_contrat")
-            ->add("Modifier", SubmitType::class)
+            ->add("contrat", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add("type_contrat", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add("Modifier", SubmitType::class, [
+                "attr" => [
+                    "class" => "btn btn-info"
+                ]
+            ])
             ->getForm();
         //$form ->setP
         $form->handleRequest($request);

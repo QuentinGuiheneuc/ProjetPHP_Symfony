@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class NewOffreController extends AbstractController
 {
@@ -19,16 +20,58 @@ class NewOffreController extends AbstractController
     {
         $newOffre = new Offre;
         $form = $this->createFormBuilder($newOffre)
-            ->add("title")
-            ->add("description")
-            ->add("adresse")
-            ->add("ville")
-            ->add("code_postal")
-            ->add("date_crea")
+            ->add("title", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add("description", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add(
+                "adresse",
+                TextareaType::class,
+                [
+                    "attr" => [
+                        "class" => "form-control"
+                    ]
+                ]
+            )
+            ->add("ville", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add(
+                "code_postal",
+                TextareaType::class,
+                [
+                    "attr" => [
+                        "class" => "form-control"
+                    ]
+                ]
+            )
+            ->add(
+                "date_crea"
+            )
             ->add("end_mission")
-            ->add("contrat")
-            ->add("type_contrat")
-            ->add("Ajouter", SubmitType::class)
+            ->add("contrat", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add("type_contrat", TextareaType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
+            ->add("Ajouter", SubmitType::class, [
+                "attr" => [
+                    "class" => "btn btn-info"
+                ]
+            ])
             ->getForm();
 
         $newOffre->setDateUpdate(new \DateTime);
